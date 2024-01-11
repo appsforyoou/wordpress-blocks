@@ -3,6 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
+import postcss from 'rollup-plugin-postcss';
+import tailwindcss from 'tailwindcss';
+
+import tailwindConfig from './tailwind.config.js'
 
 export default {
     input: './src/index.ts',
@@ -17,6 +21,10 @@ export default {
         replace({
             "process.env.NODE_ENV": JSON.stringify("development"),
             preventAssignment: true,
+        }),
+        postcss({
+            extensions: ['.css'],
+            plugins: [tailwindcss(tailwindConfig)]
         }),
         resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
         commonjs(),

@@ -1,3 +1,1 @@
-import FirtsBlock from './FirstBlock'
-
-export { FirtsBlock }
+export { default as DemoButton } from './DemoButton';

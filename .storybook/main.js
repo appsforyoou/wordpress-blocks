@@ -1,6 +1,8 @@
-const path = require("path");
+import path from "path";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
-module.exports = {
+export default ({
   stories: ["../src/**/*.stories.tsx"],
 
   // Add any Storybook addons you want here: https://storybook.js.org/addons/
@@ -13,16 +15,30 @@ module.exports = {
 
   webpackFinal: async (config) => {
     config.module.rules.push({
-      test: /\.scss$/,
-      use: ["style-loader", "css-loader"/*, "sass-loader"*/],
-      include: path.resolve(__dirname, "../")
-    });
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: [
+              tailwindcss,
+              autoprefixer
+            ]
+          }
+        }
+      ],
+      include: path.resolve(__dirname, '../src'),
+    })
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
-      loader: require.resolve("babel-loader"),
-      options: {
-        presets: [["react-app", { flow: false, typescript: true, runtime: "automatic", importSource: "react" }]]
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          presets: [["react-app", { flow: false, typescript: true, runtime: "automatic", importSource: "react" }]]
+        }
       }
     });
     config.resolve.extensions.push(".ts", ".tsx");
@@ -33,4 +49,4 @@ module.exports = {
   docs: {
     autodocs: true
   }
-};
+});
