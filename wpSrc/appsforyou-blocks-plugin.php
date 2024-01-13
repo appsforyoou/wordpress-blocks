@@ -16,7 +16,7 @@
     wp_enqueue_script(
         'appsforyou-blocks',//script handle
         plugins_url( 'bundle.js', __FILE__ ),//script path
-        array( 'wp-blocks', 'wp-element' ),//dependencies
+        array( 'wp-blocks', 'wp-element', 'wp-editor' ),//dependencies
         1.0//version
     );
  }

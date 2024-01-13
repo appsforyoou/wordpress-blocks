@@ -8,13 +8,22 @@
         "module": "ESNext",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "target": "ES6",
+        "lib": [
+            "ESNext",
+            "DOM",
+            "DOM.Iterable",
+        ],
+        "skipLibCheck": true,
+        "target": "ES5",
+        "resolveJsonModule":true,
         "noImplicitAny": true,
         "moduleResolution": "Node",
-        "jsx": "react-jsx",
+        "jsx": "preserve",
+        "downlevelIteration":true,
         "sourceMap": true,
         "outDir": "dist",
-        "baseUrl": "."
+        "baseUrl": ".",
+        "allowJs": true
     },
     "include": [
         "src/**/*"

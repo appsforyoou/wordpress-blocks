@@ -1,2 +1,2 @@
-export { default as DemoButton } from './DemoButton';
+import './DemoButton/DemoButton.wordpress.ts';
 
