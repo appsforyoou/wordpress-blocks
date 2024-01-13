@@ -1,0 +1,8 @@
+{
+    "name": "appsforyou/wordpress-blocks",
+    "description": "React blocks to be used in the WordPress Gutenberg editor",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "^1.0.24"
+    }
+}

@@ -12,6 +12,9 @@
   "keywords": [],
   "author": "appsforyou",
   "license": "ISC",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "peerDependencies": {
     "react": "^18.2.0",
