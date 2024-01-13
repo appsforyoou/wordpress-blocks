@@ -11,7 +11,7 @@ const meta: Meta<typeof DemoButton> = {
 export default meta;
 
 type Story = StoryObj<typeof DemoButton>;
-export const Primary: Story = {
+export const Ghost: Story = {
     args: {
         variant: DemoButtonVariants.GHOST,
         children: "Button",
