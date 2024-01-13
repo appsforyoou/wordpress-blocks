@@ -3,7 +3,7 @@
     "description": "React blocks to be used in the WordPress Gutenberg editor",
     "type": "wordpress-plugin",
     "require": {
-        "composer/installers": "^1.0.24"
+        "composer/installers": "^2.2.0"
     },
     "extra": {
         "installer-paths": {
