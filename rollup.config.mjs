@@ -4,9 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import postcss from 'rollup-plugin-postcss';
-import tailwindcss from 'tailwindcss';
-
-import tailwindConfig from './tailwind.config.js'
+import typescript from '@rollup/plugin-typescript';
 
 export default {
     input: './src/index.ts',
@@ -18,16 +16,24 @@ export default {
         },
     ],
     plugins: [
+        commonjs({
+            include: [
+                'node_modules/**',
+                './tailwind.config.js',
+                './postcss.config.js',
+            ]
+        }),
         replace({
             "process.env.NODE_ENV": JSON.stringify("development"),
             preventAssignment: true,
         }),
-        postcss({
-            extensions: ['.css'],
-            plugins: [tailwindcss(tailwindConfig)]
-        }),
         resolve({ extensions: ['.js', '.jsx', '.ts', '.tsx'] }),
-        commonjs(),
+        postcss({
+            config: {
+                path: './postcss.config.js'
+            }
+        }),
+        typescript(),
         babel({
             exclude: 'node_modules/**',
             presets: [
@@ -37,7 +43,7 @@ export default {
                         runtime: "automatic",
                         importSource: "react"
                     }
-                ]
+                ],
             ],
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
             babelHelpers: 'bundled',

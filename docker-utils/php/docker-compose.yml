@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  php-web-dev:
+    build: .
+    container_name: php-web
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "3005:80"
