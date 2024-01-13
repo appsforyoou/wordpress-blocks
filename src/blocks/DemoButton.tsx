@@ -18,7 +18,7 @@ const DemoButtonVariantsClasses = {
 
 export default function DemoButton({ variant = DemoButtonVariants.GHOST, children, className, ...rest }: Props) {
     return (
-        <button {...rest} className={`${DemoButtonVariantsClasses[variant]} ${className}`}>
+        <button {...rest} className="bg-red-500">
             {children}
         </button>
     )
