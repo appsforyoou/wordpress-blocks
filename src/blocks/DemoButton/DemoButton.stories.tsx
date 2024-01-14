@@ -1,25 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import DemoButton_Edit from './DemoButton_Edit';
 import { DemoButtonEditProps, DemoButtonProps, DemoButtonSaveProps } from './types';
-import { useEffect, useState } from 'react';
 import DemoButton_Save from './DemoButton_Save';
 import { DemoButtonVariants } from './const';
+import { useArgs } from '@storybook/client-api';
 
-const DemoButton_Edit_Wrapper = ({ variant, label }: DemoButtonProps) => {
-    const [attributes, setAttributes] = useState<DemoButtonProps>({ variant, label })
+const DemoButton_Edit_Wrapper = () => {
+    const [attributes, updateArgs] = useArgs<DemoButtonProps>()
 
     const wpBlockProps: DemoButtonEditProps = {
         attributes,
         isSelected: false,
         context: undefined,
-        setAttributes: () => {},
+        setAttributes: (newAttributes) => updateArgs({ ...attributes, ...newAttributes }),
         clientId: "",
         className: "",
     }
-
-    useEffect(() => {
-        setAttributes({ variant, label })
-    }, [variant, label])
 
     return <DemoButton_Edit {...wpBlockProps} />
 }
