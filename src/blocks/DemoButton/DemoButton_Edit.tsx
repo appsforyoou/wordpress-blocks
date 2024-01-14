@@ -1,12 +1,11 @@
 import { BlockControls } from '@wordpress/block-editor';
-import { BlockEditProps } from '@wordpress/blocks';
 import { ToolbarGroup, ToolbarDropdownMenu } from '@wordpress/components';
-import { ExtraProps } from './types';
+import { DemoButtonEditProps, DemoButtonProps } from './types';
 import { DemoButtonVariants, DemoButtonVariantsClasses } from './const';
 
 
-export default function DemoButton_Edit({ attributes, setAttributes }: BlockEditProps<Record<keyof ExtraProps, any>>) {
-    const { variant, label } = attributes as ExtraProps
+export default function DemoButton_Edit({ attributes, setAttributes }: DemoButtonEditProps) {
+    const { variant, label } = attributes as DemoButtonProps
 
     const updateVariant = (variant: DemoButtonVariants) => {
         setAttributes({ variant })

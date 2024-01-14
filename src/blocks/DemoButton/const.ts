@@ -1,5 +1,5 @@
-import { BlockAttribute } from '@wordpress/blocks'
-import { ExtraProps } from './types'
+import { Block, BlockAttribute } from '@wordpress/blocks'
+import { DemoButtonProps } from './types'
 
 export enum DemoButtonVariants {
     GHOST = "ghost",
@@ -16,7 +16,7 @@ export const DemoButtonVariantsClasses = {
 const defaultVariant = DemoButtonVariants.GHOST
 const defaultLabel = "Demo Button"
 
-export const WordpressBlockAttributes: Record<keyof ExtraProps, BlockAttribute<unknown>> = {
+export const WordpressBlockAttributes: Record<keyof DemoButtonProps, any> = {
     label: { type: "string", default: defaultLabel },
     variant: { enum: Object.values(DemoButtonVariants), default: defaultVariant } as any,
 }

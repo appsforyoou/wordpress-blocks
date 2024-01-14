@@ -1,14 +1,10 @@
-import { HTMLAttributes } from 'react'
 import { DemoButtonVariants } from './const'
+import { BlockEditProps, BlockSaveProps } from '@wordpress/blocks'
 
-export type ExtraProps = {
+export type DemoButtonProps = {
     variant: DemoButtonVariants
-    label?: string
+    label: string
 }
 
-export type ExtraEditProps = {
-    onVariantChanged: (variant: DemoButtonVariants) => void
-} & ExtraProps
-
-export type Props = HTMLAttributes<HTMLButtonElement> & ExtraProps
-export type EditDemoButtonProps = HTMLAttributes<HTMLDivElement> & ExtraEditProps
+export type DemoButtonEditProps = BlockEditProps<Record<keyof DemoButtonProps, any>>
+export type DemoButtonSaveProps = BlockSaveProps<Record<keyof DemoButtonProps, any>>
